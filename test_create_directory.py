@@ -11,7 +11,7 @@ def func_create_directories(path, structure):
         structure:  structure competed with paths 
     """
     for key in structure:
-        p = f"{path}/{key}"
+        p = f"{path}\\{key}"
         if isinstance(structure[key], dict):
             func_create_directory(p)
             func_create_directories(p, structure[key])
@@ -45,15 +45,26 @@ if __name__ == "__main__":
         r"C:\Users\kekes\OneDrive\Desktop\delete\00_test",
         r"C:\Users\kekes\OneDrive\Desktop\d\00_test"
     ]
-    structure = {
-        "00_a": {
-            "10_a": "",
-            "11_b": "",
-            "12_c": {
-                "20_a": "",
-                "21_b": ""
+    structure = [
+        {
+            "00_a": {
+                "10_a": "",
+                "11_b": "",
+                "12_c": {
+                    "20_a": "",
+                    "21_b": ""
+                }
+            },
+            "01_b": {
+                "10_a": "",
+                "11_b": "",
+                "12_c": {
+                    "20_a": "",
+                    "21_b": ""
+                }
             }
         },
+<<<<<<< HEAD
         "01_a": {
             "10_a": "",
             "11_b": "",
@@ -64,11 +75,18 @@ if __name__ == "__main__":
         },
         "02_a": ""
     }
+=======
+        {
+            "02_c": ""
+        }
+    ]
+>>>>>>> test_branch
 
     # test
     for p in path:
         res = func_create_directory(p)
         print(f"func_create_directory --> {res}")
     
-    res = func_create_directories(path[0], structure)
-    print(res)
+    for s in structure:
+        res = func_create_directories(path[0], s)
+        print(res)
