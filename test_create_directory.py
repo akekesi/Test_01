@@ -21,8 +21,13 @@ def func_create_directory(path):
 
 if __name__ == "__main__":
     # value
-    path = r"C:\Users\kekes\OneDrive\D\delete\00_test"
+    path = [
+        r"C:\Users\kekes\OneDrive\Desktop\delete\00_test",
+        r"C:\Users\kekes\OneDrive\Desktop\delete\00_test",
+        r"C:\Users\kekes\OneDrive\Desktop\d\00_test"
+    ]
 
     # test
-    res = func_create_directory(path)
-    print(f"func_create_directory --> {res}")
+    for p in path:
+        res = func_create_directory(p)
+        print(f"func_create_directory --> {res}")
