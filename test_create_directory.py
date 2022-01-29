@@ -21,7 +21,7 @@ def func_create_directory(path):
 
 if __name__ == "__main__":
     # value
-    path = r"C:\Users\kekes\OneDrive\Desktop\delete\00_test"
+    path = r"C:\Users\kekes\OneDrive\D\delete\00_test"
 
     # test
     res = func_create_directory(path)
