@@ -1,7 +1,5 @@
 import os
 
-from test_json import func_write_json
-
 
 def func_create_directory(path):
     """
