@@ -31,4 +31,3 @@ for key, value in files.items():
         files[key][k] = path_f
         if not os.path.exists(path_f):
             with open(path_f, 'w'): pass
-print(files)
