@@ -41,7 +41,7 @@ if __name__ == "__main__":
         "b": 2,
         "c": 3
     }
-    path = r"C:\Users\kekes\OneDrive\Desktop\delete.json"
+    path = r"C:\Users\kekes\OneDrive\Desktop\delete\delete.json"
 
     # test
     res_write = func_write_json(path, data)
