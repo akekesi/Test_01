@@ -12,7 +12,10 @@ class Prepare:
 
 
     def meth_delete_directories(self):
-        shutil.rmtree(self.path)
+        try:
+            shutil.rmtree(self.path)
+        except OSError as e:
+            print(f"{e}")
     
     
     def meth_create_directories(self):
@@ -20,11 +23,14 @@ class Prepare:
         func_create_directories(self.path, self.structure)
 
 
-    def meth_create_files(self):
+    def meth_create_files(self, structure=True):
         for key, value in self.files.items():
             for k in value:
-                tmp_key = f"00_{key}"
-                path_tmp = f"{self.structure[tmp_key]}\{k}.{key}"
+                if structure:
+                    tmp_key = f"00_{key}"
+                    path_tmp = f"{self.structure[tmp_key]}\{k}.{key}"
+                else:
+                    path_tmp = f"{self.path}\{k}.{key}"
                 self.files[key][k] = path_tmp
                 if not os.path.exists(path_tmp):
                     with open(path_tmp, 'w'): pass
@@ -32,7 +38,8 @@ class Prepare:
 
 if __name__ == "__main__":
     # value
-    path = r"C:\Users\kekes\OneDrive\Desktop\delete\00_prepare"
+    path_00 = r"C:\Users\kekes\OneDrive\Desktop\delete\00_prepare"
+    path_01 = r"C:\Users\kekes\OneDrive\Desktop\delete\01_prepare"
     structure = {
         "00_json": "",
         "00_txt": ""
@@ -51,9 +58,16 @@ if __name__ == "__main__":
     }
 
     # test
-    prep = Prepare(path, structure, files)
-    prep.meth_delete_directories()
-    prep.meth_create_directories()
-    prep.meth_create_files()
-    print(json.dumps(prep.structure, indent=4))
-    print(json.dumps(prep.files, indent=4))
+    prep_00 = Prepare(path_00, structure, files)
+    prep_00.meth_delete_directories()
+    prep_00.meth_create_directories()
+    prep_00.meth_create_files()
+    print(json.dumps(prep_00.structure, indent=4))
+    print(json.dumps(prep_00.files, indent=4))
+
+    prep_01 = Prepare(path_01, structure, files)
+    prep_01.meth_delete_directories()
+    prep_01.meth_create_directories()
+    prep_01.meth_create_files(structure=False)
+    print(json.dumps(prep_01.structure, indent=4))
+    print(json.dumps(prep_01.files, indent=4))
