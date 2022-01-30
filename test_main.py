@@ -15,6 +15,7 @@ def func_test_main(path_structure: str, path_directory: str) -> dict:
     structure_path = func_create_directories(path_directory, structure)
     return structure_path
 
+
 if __name__ == "__main__":
     # path
     path_structure = r"C:\00_TUBI\99_GIT\Test_01\00_json\test_structure.json"
