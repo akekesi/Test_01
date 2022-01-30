@@ -13,10 +13,8 @@ def func_write_json(path: str, data: dict) -> None:
     with open(path, "w") as f:
         json.dump(data, f, indent=4)
 
-    return None
 
-
-def func_read_json(path: str) -> str:
+def func_read_json(path: str) -> dict:
     """
     Read json
     Args:

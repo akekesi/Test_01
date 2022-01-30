@@ -1,7 +1,7 @@
 import os
 
 
-def func_create_directories(path, structure):
+def func_create_directories(path: str, structure: dict) -> dict:
     """
     Create directory structure
     Args:
@@ -22,7 +22,7 @@ def func_create_directories(path, structure):
     return structure
 
 
-def func_create_directory(path):
+def func_create_directory(path: str) -> None:
     """
     Create directory
     Args:
