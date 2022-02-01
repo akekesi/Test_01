@@ -14,6 +14,8 @@ def func_wait(n: int, run_type: str) -> None:
     """
     print(f"--> start {run_type}")
     print(f"--> wait {run_type} {n}s")
+    for i in range(n):
+        tmp = 2**1e3
     time.sleep(n)
     print(f"--> end {run_type}")
 
@@ -31,10 +33,10 @@ if __name__ == "__main__":
 
     # threading
     print(f"\nTHREADING START")
+    start = time.time()
     threads = []
     for i in range(n_wait):
-        threads.append(Thread(target=func_wait, args=(n_wait/n_split, f"threading-{i}")))
-    start = time.time()
+        threads.append(Thread(target=func_wait, args=(int(n_wait/n_split), f"threading-{i}")))
     for thread in threads:
         thread.start()
     for thread in threads:
@@ -47,7 +49,7 @@ if __name__ == "__main__":
     start = time.time()
     pool = Pool(processes=n_wait)
     for i in range(n_wait):
-        pool.apply_async(func=func_wait, args=(n_wait/n_split, f"multiprocessing-{i}"))
+        pool.apply_async(func=func_wait, args=(int(n_wait/n_split), f"multiprocessing-{i}"))
     pool.close()
     pool.join()
     end = time.time()
